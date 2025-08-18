@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Patient Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f0f0f, #232526);
+      color: #f8f9fa;
+    }
+    .card {
+      border-radius: 20px;
+      transition: transform 0.6s ease, box-shadow 0.6s ease;
+    }
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0px 18px 35px rgba(255, 204, 0, 0.4);
+    }
+    .btn-custom {
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+    }
+    .btn-custom:hover {
+      transform: scale(1.08);
+      background-color: #ffcc00 !important;
+      color: #000 !important;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container py-4">
+  <a href="javascript:history.back()" class="btn btn-outline-light btn-custom mb-3">&larr; Back</a>
+  <h2 class="text-center text-warning mb-4">Patient Details</h2>
+
+  <div class="card shadow-lg bg-dark bg-opacity-75 text-light p-4">
+    <div class="text-center">
+      {% if patient['Gender'] == 'Male' %}
+        <img src="https://cdn-icons-png.flaticon.com/512/1999/1999625.png"
+             alt="Male Avatar" class="img-fluid rounded-circle mb-3" width="120">
+      {% elif patient['Gender'] == 'Female' %}
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135789.png"
+             alt="Female Avatar" class="img-fluid rounded-circle mb-3" width="120">
+      {% else %}
+        <img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png"
+             alt="Default Avatar" class="img-fluid rounded-circle mb-3" width="120">
+      {% endif %}
+    </div>
+    <ul class="list-group list-group-flush">
+      {% for key, value in patient.items() %}
+        <li class="list-group-item bg-dark text-light">
+          <strong>{{ key }}:</strong> {{ value }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>
